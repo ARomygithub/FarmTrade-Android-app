@@ -1,13 +1,13 @@
 package com.bangkit.farmtrade
 
 import android.os.Bundle
-import com.google.android.material.bottomnavigation.BottomNavigationView
 import androidx.appcompat.app.AppCompatActivity
+import androidx.lifecycle.ViewModelProvider
 import androidx.navigation.findNavController
 import androidx.navigation.ui.AppBarConfiguration
-import androidx.navigation.ui.setupActionBarWithNavController
 import androidx.navigation.ui.setupWithNavController
 import com.bangkit.farmtrade.databinding.ActivityMainBinding
+import com.google.android.material.bottomnavigation.BottomNavigationView
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -20,6 +20,7 @@ class MainActivity : AppCompatActivity() {
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        val mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
         val navView: BottomNavigationView = binding.navView
 
@@ -31,7 +32,12 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_dashboard, R.id.navigation_notifications
             )
         )
-        setupActionBarWithNavController(navController, appBarConfiguration)
+        setSupportActionBar(binding.toolbar)
+        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
+        if(!mainViewModel.isLogin()) {
+            navController.navigate(R.id.action_navigation_home_to_loginActivity)
+            finish()
+        }
     }
 }

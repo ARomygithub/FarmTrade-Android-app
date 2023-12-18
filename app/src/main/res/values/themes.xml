@@ -1,6 +1,6 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Theme.FarmTrade" parent="Theme.MaterialComponents.DayNight.DarkActionBar">
+    <style name="Theme.FarmTrade" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/md_theme_light_primary</item>
         <item name="colorOnPrimary">@color/md_theme_light_onPrimary</item>
         <item name="colorPrimaryContainer">@color/md_theme_light_primaryContainer</item>
@@ -30,5 +30,51 @@
         <!-- Status bar color. -->
         <item name="android:statusBarColor">?attr/colorPrimaryVariant</item>
 <!--         Customize your theme here.-->
+    </style>
+    <style name="Text"/>
+    <style name="Text.Display">
+        <item name="android:fontFamily">@font/inter_bold</item>
+    </style>
+    <style name="Text.Display.Large">
+        <item name="android:textSize">57sp</item>
+    </style>
+    <style name="Text.Display.Medium">
+        <item name="android:textSize">45sp</item>
+    </style>
+    <style name="Text.Display.Small">
+        <item name="android:textSize">36sp</item>
+    </style>
+    <style name="Text.Title">
+        <item name="android:fontFamily">@font/inter_regular</item>
+    </style>
+    <style name="Text.Title.Large">
+        <item name="android:textSize">22sp</item>
+    </style>
+    <style name="Text.Label">
+        <item name="android:fontFamily">@font/inter_regular</item>
+    </style>
+    <style name="Text.Label.Large">
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="Text.Label.Medium">
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="Text.Label.Small">
+        <item name="android:textSize">11sp</item>
+    </style>
+    <style name="Text.Body">
+        <item name="android:fontFamily">@font/inter_regular</item>
+    </style>
+    <style name="Text.Body.Large">
+        <item name="android:textSize">16sp</item>
+    </style>
+    <style name="Text.Body.Medium">
+        <item name="android:textSize">14sp</item>
+    </style>
+    <style name="Text.Body.Small">
+        <item name="android:textSize">12sp</item>
+    </style>
+    <style name="Toolbar">
+        <item name="android:background">@color/md_theme_light_surface</item>
     </style>
 </resources>

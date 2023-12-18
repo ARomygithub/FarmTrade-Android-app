@@ -1,6 +1,16 @@
 <resources>
-    <string name="app_name">FarmTrade</string>
+    <string name="app_name">TradeFarm</string>
     <string name="title_home">Home</string>
     <string name="title_dashboard">Dashboard</string>
     <string name="title_notifications">Notifications</string>
+    <string name="login">Masuk menggunakan akun</string>
+    <string name="logo">logo</string>
+    <string name="email">Email</string>
+    <string name="password">Password</string>
+    <string name="masuk">Masuk</string>
+    <string name="need_account"><u>Belum punya akun? Daftar di sini</u></string>
+    <string name="register_label">Daftar Sekarang</string>
+    <string name="name">Nama</string>
+    <string name="daftar">Daftar</string>
+    <string name="confirm_password">Konfirmasi Password</string>
 </resources>

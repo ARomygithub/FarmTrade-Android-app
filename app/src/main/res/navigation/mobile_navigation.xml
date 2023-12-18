@@ -9,7 +9,13 @@
         android:id="@+id/navigation_home"
         android:name="com.bangkit.farmtrade.ui.home.HomeFragment"
         android:label="@string/title_home"
-        tools:layout="@layout/fragment_home" />
+        tools:layout="@layout/fragment_home" >
+        <action
+            android:id="@+id/action_navigation_home_to_loginActivity"
+            app:destination="@id/loginActivity"
+            app:popUpTo="@id/navigation_home"
+            app:popUpToInclusive="true" />
+    </fragment>
 
     <fragment
         android:id="@+id/navigation_dashboard"
@@ -30,4 +36,8 @@
         android:id="@+id/detailForecastFragment"
         android:name="com.bangkit.farmtrade.ui.detailforecast.DetailForecastFragment"
         android:label="DetailForecastFragment" />
+    <activity
+        android:id="@+id/loginActivity"
+        android:name="com.bangkit.farmtrade.ui.login.LoginActivity"
+        android:label="LoginActivity" />
 </navigation>
