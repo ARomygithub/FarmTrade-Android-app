@@ -9,7 +9,7 @@
         android:fullBackupContent="@xml/backup_rules"
         android:icon="@drawable/tradefarm"
         android:label="@string/app_name"
-        android:roundIcon="@drawable/tradefarm"
+        android:roundIcon="@drawable/tradefarmplustext"
         android:supportsRtl="true"
         android:theme="@style/Theme.FarmTrade"
         tools:targetApi="31">
