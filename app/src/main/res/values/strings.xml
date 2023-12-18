@@ -1,8 +1,8 @@
 <resources>
     <string name="app_name">TradeFarm</string>
-    <string name="title_home">Home</string>
-    <string name="title_dashboard">Dashboard</string>
-    <string name="title_notifications">Notifications</string>
+    <string name="title_home">Beranda</string>
+    <string name="title_forecast">Prediksi</string>
+    <string name="title_profile">Profil</string>
     <string name="login">Masuk menggunakan akun</string>
     <string name="logo">logo</string>
     <string name="email">Email</string>
@@ -13,4 +13,15 @@
     <string name="name">Nama</string>
     <string name="daftar">Daftar</string>
     <string name="confirm_password">Konfirmasi Password</string>
+    <string name="komoditas">Komoditas</string>
+    <string name="daerah">Daerah</string>
+
+    <string-array name="komoditas_array">
+        <item>Bawang Merah</item>
+        <item>Beras</item>
+        <item>Cabai Merah</item>
+        <item>Cabai Rawit</item>
+        <item>Gula Pasir</item>
+        <item>Minyak Goreng</item>
+    </string-array>
 </resources>

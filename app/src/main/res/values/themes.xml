@@ -44,6 +44,18 @@
     <style name="Text.Display.Small">
         <item name="android:textSize">36sp</item>
     </style>
+    <style name="Text.Headline">
+        <item name="android:fontFamily">@font/inter_bold</item>
+    </style>
+    <style name="Text.Headline.Large">
+        <item name="android:textSize">32sp</item>
+    </style>
+    <style name="Text.Headline.Medium">
+        <item name="android:textSize">28sp</item>
+    </style>
+    <style name="Text.Headline.Small">
+        <item name="android:textSize">24sp</item>
+    </style>
     <style name="Text.Title">
         <item name="android:fontFamily">@font/inter_regular</item>
     </style>
