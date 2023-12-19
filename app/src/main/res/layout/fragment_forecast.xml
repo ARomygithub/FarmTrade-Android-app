@@ -43,7 +43,7 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layout_komoditas"
-        style="@style/Widget.Material3.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="0dp"
@@ -59,15 +59,16 @@
             android:id="@+id/ed_komoditas"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:inputType="none"
             tools:ignore="LabelFor"
-            tools:text="Komoditas"/>
+            android:inputType="none"
+            tools:text="Komoditas"
+            style="@style/Text.Body.Large"/>
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
         android:id="@+id/layout_daerah"
-        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
-        android:layout_width="0dp"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox.ExposedDropdownMenu"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="20dp"
         android:layout_marginStart="32dp"
@@ -78,12 +79,63 @@
         app:startIconDrawable="@drawable/baseline_search_24"
         android:hint="@string/daerah">
         <AutoCompleteTextView
+            android:id="@+id/ed_daerah"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:inputType="none"
             tools:ignore="LabelFor"
-            style = "@style/Text.Body.Medium"/>
+            tools:text="Daerah"
+            android:inputType="none"
+            style = "@style/Text.Body.Large"/>
     </com.google.android.material.textfield.TextInputLayout>
 
+    <com.google.android.material.textfield.TextInputLayout
+        android:id="@+id/layout_date"
+        style="@style/Widget.MaterialComponents.TextInputLayout.OutlinedBox"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginEnd="32dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_daerah"
+        app:helperTextEnabled="true"
+        app:helperText="Tanggal yang diprediksi (MM/dd/yyyy)"
+        app:endIconMode="custom"
+        app:endIconDrawable="@drawable/baseline_today_24"
+        android:hint="@string/tanggal">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/ed_tanggal"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:ems="10"
+            android:inputType="date"
+            tools:ignore="SpeakableTextPresentCheck"
+            style="@style/Text.Body.Large" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/btn_forecast"
+        style="@style/Text.Label.Large"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginTop="13dp"
+        android:layout_marginEnd="32dp"
+        android:text="@string/title_forecast"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/layout_date" />
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        android:visibility="gone"
+        tools:visibility="visible"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
