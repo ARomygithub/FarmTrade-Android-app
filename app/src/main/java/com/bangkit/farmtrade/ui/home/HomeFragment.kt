@@ -7,8 +7,15 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import com.bangkit.farmtrade.R
 import com.bangkit.farmtrade.databinding.FragmentHomeBinding
+import com.bangkit.farmtrade.ui.adapters.ImageAdapter
+import com.bangkit.farmtrade.ui.adapters.ImageItem
+import com.google.android.material.carousel.CarouselLayoutManager
+import dagger.hilt.android.AndroidEntryPoint
+import java.util.UUID
 
+@AndroidEntryPoint
 class HomeFragment : Fragment() {
 
     private var _binding: FragmentHomeBinding? = null
@@ -22,10 +29,31 @@ class HomeFragment : Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        val homeViewModel =
-            ViewModelProvider(this).get(HomeViewModel::class.java)
-
         _binding = FragmentHomeBinding.inflate(inflater, container, false)
+        val homeViewModel = ViewModelProvider(this)[HomeViewModel::class.java]
+        homeViewModel.isLoading.observe(viewLifecycleOwner) { isLoading ->
+            binding.progressBar.visibility = if (isLoading) View.VISIBLE else View.GONE
+        }
+        with(binding) {
+            val imageAdapter = ImageAdapter()
+            carouselRv.adapter = imageAdapter
+            carouselRv.layoutManager = CarouselLayoutManager()
+            val imageList = listOf<ImageItem>(
+                ImageItem(
+                    UUID.randomUUID().toString(),
+                    R.drawable.promo
+                ),
+                ImageItem(
+                    UUID.randomUUID().toString(),
+                    R.drawable.promo
+                ),
+                ImageItem(
+                    UUID.randomUUID().toString(),
+                    R.drawable.promo
+                )
+            )
+            imageAdapter.submitList(imageList)
+        }
         val root: View = binding.root
 
         val textView: TextView = binding.textHome

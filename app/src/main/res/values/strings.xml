@@ -16,6 +16,8 @@
     <string name="komoditas">Komoditas</string>
     <string name="daerah">Daerah</string>
     <string name="tanggal">Tanggal</string>
+    <string name="search_user_hint">Search for fruits, vegetables, groce..</string>
+    <string name="lokasi">Lokasi</string>
 
     <string-array name="komoditas_array">
         <item>Bawang Merah</item>

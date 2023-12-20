@@ -32,8 +32,7 @@ class MainActivity : AppCompatActivity() {
                 R.id.navigation_home, R.id.navigation_forecast, R.id.navigation_profile
             )
         )
-        setSupportActionBar(binding.toolbar)
-        binding.toolbar.setupWithNavController(navController, appBarConfiguration)
+//        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
         if(!mainViewModel.isLogin()) {
             navController.navigate(R.id.action_navigation_home_to_loginActivity)

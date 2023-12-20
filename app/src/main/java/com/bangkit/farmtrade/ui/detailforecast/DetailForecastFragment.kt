@@ -6,6 +6,7 @@ import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
+import androidx.navigation.findNavController
 import com.bangkit.farmtrade.data.remote.response.ForecastResponse
 import com.bangkit.farmtrade.databinding.FragmentDetailForecastBinding
 import com.bangkit.farmtrade.ui.chart.DateAxisFormatter
@@ -116,7 +117,14 @@ class DetailForecastFragment: Fragment(), OnChartValueSelectedListener {
 //            chart.invalidate()
 //        }
 //        binding.chart.animateX(1500)
+        setupToolbar()
         return binding.root
+    }
+
+    private fun setupToolbar() {
+        binding.toolbar.apply {
+            setNavigationOnClickListener { findNavController().popBackStack() }
+        }
     }
 
     override fun onDestroyView() {
