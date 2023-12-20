@@ -100,7 +100,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/layout_daerah"
         app:helperTextEnabled="true"
-        app:helperText="Tanggal yang diprediksi (MM/dd/yyyy)"
+        app:helperText="Tanggal yang diprediksi (dd/MM/yyyy)"
         app:endIconMode="custom"
         app:endIconDrawable="@drawable/baseline_today_24"
         android:hint="@string/tanggal">

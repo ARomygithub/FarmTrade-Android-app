@@ -35,7 +35,20 @@
     <fragment
         android:id="@+id/detailForecastFragment"
         android:name="com.bangkit.farmtrade.ui.detailforecast.DetailForecastFragment"
-        android:label="DetailForecastFragment" />
+        android:label="Hasil Prediksi" >
+        <argument
+            android:name="komoditas"
+            app:argType="string"
+            android:defaultValue="komoditas" />
+        <argument
+            android:name="daerah"
+            app:argType="string"
+            android:defaultValue="daerah" />
+        <argument
+            android:name="dateToPredict"
+            app:argType="string"
+            android:defaultValue="12/01/2024" />
+    </fragment>
     <activity
         android:id="@+id/loginActivity"
         android:name="com.bangkit.farmtrade.ui.login.LoginActivity"

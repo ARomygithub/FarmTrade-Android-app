@@ -8,6 +8,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.findNavController
 import com.bangkit.farmtrade.R
 import com.bangkit.farmtrade.databinding.FragmentForecastBinding
 import com.google.android.material.datepicker.MaterialDatePicker
@@ -43,7 +44,7 @@ class ForecastFragment : Fragment() {
             var selection = MaterialDatePicker.todayInUtcMilliseconds()
             if(binding.edTanggal.text.toString().isNotEmpty()){
                 try {
-                    val dtf = DateTimeFormatter.ofPattern("MM/dd/yyyy")
+                    val dtf = DateTimeFormatter.ofPattern("dd/MM/yyyy")
                         .withZone(ZoneId.of("UTC"))
                     val tempAccessor = dtf.parse(binding.edTanggal.text.toString())
                     val date = LocalDate.from(tempAccessor)
@@ -60,7 +61,7 @@ class ForecastFragment : Fragment() {
                 .setSelection(selection)
                 .build()
             datePicker.addOnPositiveButtonClickListener { date ->
-                val formatter = SimpleDateFormat("MM/dd/yyyy", Locale("id","ID"))
+                val formatter = SimpleDateFormat("dd/MM/yyyy", Locale("id","ID"))
                 val calendar = Calendar.getInstance()
                 calendar.timeInMillis = date
                 Log.d("millis", date.toString())
@@ -68,6 +69,14 @@ class ForecastFragment : Fragment() {
                 binding.edTanggal.setText(dateText)
             }
             datePicker.show(childFragmentManager,"datePicker")
+        }
+        // dummy
+        binding.btnForecast.setOnClickListener {
+            val action = ForecastFragmentDirections.actionNavigationForecastToDetailForecastFragment()
+            action.komoditas = binding.edKomoditas.text.toString()
+            action.daerah = binding.edDaerah.text.toString()
+            action.dateToPredict = binding.edTanggal.text.toString()
+            it.findNavController().navigate(action)
         }
         return binding.root
     }
