@@ -13,9 +13,6 @@ import java.text.NumberFormat
 
 class ProductAdapter: ListAdapter<ProductItem, ProductAdapter.ViewHolder>(DIFF_CALLBACK) {
     class ViewHolder(private val binding: ProductItemBinding): RecyclerView.ViewHolder(binding.root) {
-        private fun afterDiscount(price: Int): Int {
-            return (price * 0.8).toInt()
-        }
         @SuppressLint("SetTextI18n")
         fun bind(productItem: ProductItem) {
             Glide.with(this.itemView.context)
@@ -23,14 +20,20 @@ class ProductAdapter: ListAdapter<ProductItem, ProductAdapter.ViewHolder>(DIFF_C
                 .into(binding.productImage)
             binding.productTitle.text = productItem.name
             binding.producer.text = productItem.producer
-            binding.priceBefore.text = getCurrencyString(productItem.price)
+            binding.priceBefore.text = Companion.getCurrencyString(productItem.price)
             binding.priceBefore.paintFlags = binding.priceBefore.paintFlags or android.graphics.Paint.STRIKE_THRU_TEXT_FLAG
-            binding.priceAfter.text = getCurrencyString(afterDiscount(productItem.price)) + " /kg"
+            binding.priceAfter.text = Companion.getCurrencyString(Companion.afterDiscount(productItem.price)) + " /kg"
         }
 
-        private fun getCurrencyString(price: Int): String {
-            val formatter : NumberFormat = DecimalFormat("#,###")
-            return "Rp${formatter.format(price)}"
+        companion object {
+            fun getCurrencyString(price: Int): String {
+                val formatter : NumberFormat = DecimalFormat("#,###")
+                return "Rp${formatter.format(price)}"
+            }
+
+            fun afterDiscount(price: Int): Int {
+                return (price * 0.8).toInt()
+            }
         }
     }
     interface OnItemClickCallback {

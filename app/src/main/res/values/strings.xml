@@ -22,6 +22,8 @@
     <string name="more">See more</string>
     <string name="harga_sebelum">Rp. 21.000/kg</string>
     <string name="jawa_barat">Jawa Barat</string>
+    <string name="deskripsi">Deskripsi</string>
+    <string name="beli">Beli</string>
 
     <string-array name="komoditas_array">
         <item>Bawang Merah</item>

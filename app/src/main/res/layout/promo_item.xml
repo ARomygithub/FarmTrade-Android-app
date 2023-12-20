@@ -12,6 +12,6 @@
         android:id="@+id/carousel_image_view"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:scaleType="fitCenter"
+        android:scaleType="centerCrop"
         tools:ignore="contentDescription"/>
 </com.google.android.material.carousel.MaskableFrameLayout>

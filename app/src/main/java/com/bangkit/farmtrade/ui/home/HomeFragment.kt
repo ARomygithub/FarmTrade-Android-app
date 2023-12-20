@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import android.widget.ArrayAdapter
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProvider
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.bangkit.farmtrade.R
 import com.bangkit.farmtrade.databinding.FragmentHomeBinding
@@ -58,11 +59,21 @@ class HomeFragment : Fragment() {
             imageAdapter.submitList(imageList)
 
             val productAdapter = ProductAdapter()
-//            productAdapter.setOnItemClickCallback(object: ProductAdapter.OnItemClickCallback{
-//                override fun onItemClicked(product: ProductItem) {
-//
-//                }
-//            })
+            productAdapter.setOnItemClickCallback(object: ProductAdapter.OnItemClickCallback{
+                override fun onItemClicked(product: ProductItem) {
+                    val action = HomeFragmentDirections.actionNavigationHomeToDetailProductFragment()
+                    action.description = product.description
+                    action.image = product.image
+                    action.title = product.name
+                    action.phoneNumber = product.phoneNumber
+                    action.producer = product.producer
+                    with(ProductAdapter.ViewHolder){
+                        action.priceBefore = getCurrencyString(product.price)
+                        action.priceAfter = getCurrencyString(afterDiscount(product.price)) + " /kg"
+                    }
+                    findNavController().navigate(action)
+                }
+            })
             rvProducts.adapter = productAdapter
             rvProducts.layoutManager= LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
             val productList = listOf(
@@ -115,7 +126,7 @@ class HomeFragment : Fragment() {
                     "f2",
                     "Banana",
                     15000,
-                    "Ripe yellow bananas",
+                    "Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas ",
                     "https://fruit-vegi-list-api.cyclic.app/images/banana.jpg",
                     "Tropical Fruits Farm",
                     "+5544332211"
