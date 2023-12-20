@@ -18,6 +18,10 @@
     <string name="tanggal">Tanggal</string>
     <string name="search_user_hint">Search for fruits, vegetables, groce..</string>
     <string name="lokasi">Lokasi</string>
+    <string name="special_deal">Special Deal</string>
+    <string name="more">See more</string>
+    <string name="harga_sebelum">Rp. 21.000/kg</string>
+    <string name="jawa_barat">Jawa Barat</string>
 
     <string-array name="komoditas_array">
         <item>Bawang Merah</item>
@@ -32,5 +36,12 @@
         <item>Jawa Barat</item>
         <item>Jawa Tengah</item>
         <item>Jawa Timur</item>
+    </string-array>
+    <string-array name="lokasi_array">
+        <item>DKI Jakarta</item>
+        <item>Jawa Barat</item>
+        <item>Jawa Tengah</item>
+        <item>Jawa Timur</item>
+        <item>Banten</item>
     </string-array>
 </resources>
