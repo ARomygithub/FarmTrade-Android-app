@@ -7,15 +7,14 @@
 
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
-        style="@style/Toolbar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:logo="@drawable/tradefarm_20"
-        tools:title="@string/app_name" />
+        android:background="?attr/colorPrimary"
+        app:title="@string/app_name" />
 
     <ImageView
         android:id="@+id/imageView"
