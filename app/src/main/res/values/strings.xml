@@ -24,6 +24,10 @@
     <string name="jawa_barat">Jawa Barat</string>
     <string name="deskripsi">Deskripsi</string>
     <string name="beli">Beli</string>
+    <string name="contact">Kontak</string>
+    <string name="change">Ubah</string>
+    <string name="cancel">Batal</string>
+    <string name="save">Simpan Perubahan</string>
 
     <string-array name="komoditas_array">
         <item>Bawang Merah</item>
