@@ -68,7 +68,7 @@ class ProductAdapter: ListAdapter<ProductItem, ProductAdapter.ViewHolder>(DIFF_C
 }
 
 data class ProductItem(
-    val id: Int,
+    val id: String,
     val name: String,
     val price: Int,
     val description: String,

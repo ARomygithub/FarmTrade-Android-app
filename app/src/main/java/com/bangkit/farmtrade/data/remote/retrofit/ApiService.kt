@@ -30,6 +30,6 @@ interface ApiService {
     @PUT("profile/{id}")
     suspend fun updateProfile(@Path("id") id: Int, @Body request: ProfileResponse): ProfileResponse
 
-    @GET("predict")
+    @POST("predict")
     suspend fun getForecast(@Body request: ForecastRequest): ForecastResponse
 }

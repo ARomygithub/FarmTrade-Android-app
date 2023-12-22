@@ -140,15 +140,20 @@ class ProfileFragment : Fragment() {
         try {
             profileViewModel.getProfile()
             with(binding) {
+                profileEmailEd.setText(auth.currentUser!!.email)
+                Glide.with(requireContext())
+                    .load("https://i.imgur.com/X5Ns8y3.jpeg")
+                    .into(profileImage)
+                profilePasswordEd.setText("")
+                nameLabel.text = "Ahmad Romy Zahran"
+                profileNameEd.setText("Ahmad Romy Zahran")
                 with(profileViewModel) {
+                    nameLabel.text = profileResponse.value!!.name
+                    profileNameEd.setText(profileResponse.value!!.name)
+                    profileContactEd.setText(profileResponse.value!!.contact)
                     Glide.with(requireContext())
                         .load(profileResponse.value!!.imageUrl)
                         .into(profileImage)
-                    nameLabel.text = profileResponse.value!!.name
-                    profileNameEd.setText(profileResponse.value!!.name)
-                    profileEmailEd.setText(auth.currentUser!!.email)
-                    profileContactEd.setText(profileResponse.value!!.contact)
-                    profilePasswordEd.setText("")
                 }
             }
         } catch (_ : Exception) {}

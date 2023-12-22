@@ -7,6 +7,7 @@ import android.view.ViewGroup
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.navigation.findNavController
+import com.bangkit.farmtrade.R
 import com.bangkit.farmtrade.data.remote.response.ForecastResponse
 import com.bangkit.farmtrade.databinding.FragmentDetailForecastBinding
 import com.bangkit.farmtrade.ui.chart.DateAxisFormatter
@@ -40,6 +41,8 @@ class DetailForecastFragment: Fragment(), OnChartValueSelectedListener {
             tanggalKomoditas.text = DetailForecastFragmentArgs.fromBundle(arguments as Bundle).dateToPredict
             detailViewModel.forecast.observe(viewLifecycleOwner) {forecast ->
                 setChart(forecast)
+                binding.priceKomoditas.setText(forecast.futureForecast.last().toString())
+                binding.imageKomoditas.setImageResource(R.drawable.red_onion)
             }
             detailViewModel.getForecast(
                 nameKomoditas.text.toString(),

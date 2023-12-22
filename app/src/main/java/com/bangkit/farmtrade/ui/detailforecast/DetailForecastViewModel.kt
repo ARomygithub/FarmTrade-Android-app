@@ -37,22 +37,27 @@ class DetailForecastViewModel @Inject constructor(
             val datePredict = formatter.parse(dateToPredict)
             val ldtPredict = LocalDateTime.ofInstant(datePredict!!.toInstant(), ZoneId.systemDefault())
             val zdtPredict = ldtPredict.atZone(ZoneId.systemDefault())
-            daysNumber = ChronoUnit.DAYS.between(zdtPredict.toLocalDate(), zdtStart.toLocalDate()).toInt()
+            daysNumber = ChronoUnit.DAYS.between(zdtStart.toLocalDate(), zdtPredict.toLocalDate()).toInt()
         } catch (_ : Exception) {}
         val forecastRequest = ForecastRequest(
             daysNumber = daysNumber,
             region = region,
             komoditas = komoditas
         )
-        viewModelScope.launch {
-            try {
-                val response = apiService.getForecast(forecastRequest)
-                _forecast.value = response
-            } catch (e: HttpException) {
-                val response = ForecastResponse(ArrayList(), ArrayList(), e.message())
-                _forecast.value= response
-            }
-        }
+//        viewModelScope.launch {
+//            try {
+//                val response = apiService.getForecast(forecastRequest)
+//                _forecast.value = response
+//            } catch (e: HttpException) {
+//                val response = ForecastResponse(ArrayList(), ArrayList(), e.message())
+//                _forecast.value= response
+//            }
+//        }
+        val forecastResponse = ForecastResponse(
+            dateForecast = listOf("2021-06-01", "2021-06-02", "2021-06-03", "2021-06-04", "2021-06-05"),
+            futureForecast = listOf(100.0, 200.0, 300.0, 400.0, 500.0)
+        )
+        _forecast.value = forecastResponse
         _isLoading.value = false
     }
 }
