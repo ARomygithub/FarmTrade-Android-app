@@ -76,81 +76,81 @@ class HomeFragment : Fragment() {
             })
             rvProducts.adapter = productAdapter
             rvProducts.layoutManager= LinearLayoutManager(requireContext(), LinearLayoutManager.HORIZONTAL, false)
-            val productList = listOf(
-                ProductItem(
-                    "v1",
-                    "Carrot",
-                    15000,
-                    "Fresh and crunchy carrots",
-                    "https://fruit-vegi-list-api.cyclic.app/images/carrot.jpg",
-                    "Farm Fresh Produce",
-                    "+1234567890"
-                ),
-                ProductItem(
-                    "v2",
-                    "Broccoli",
-                    12000,
-                    "Nutrient-rich broccoli florets",
-                    "https://fruit-vegi-list-api.cyclic.app/images/beetroot.jpg",
-                    "Green Gardens",
-                    "+9876543210"
-                ),
-                ProductItem(
-                    "v3",
-                    "Spinach",
-                    18000,
-                    "Fresh and nutrient-packed spinach leaves",
-                    "https://fruit-vegi-list-api.cyclic.app/images/cauli-flower.jpg",
-                    "Organic Greens Farm",
-                    "+9876543210"
-                ),
-                ProductItem(
-                    "v4",
-                    "Bell Pepper",
-                    20000,
-                    "Colorful bell peppers for cooking",
-                    "https://fruit-vegi-list-api.cyclic.app/images/tomatoes.jpeg",
-                    "Rainbow Harvest",
-                    "+1234567890"
-                ),
-                ProductItem(
-                    "f1",
-                    "Apple",
-                    13000,
-                    "Sweet and juicy red apples",
-                    "https://fruit-vegi-list-api.cyclic.app/images/apple.jpg",
-                    "Orchard Delights",
-                    "+1112233445"
-                ),
-                ProductItem(
-                    "f2",
-                    "Banana",
-                    15000,
-                    "Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas ",
-                    "https://fruit-vegi-list-api.cyclic.app/images/banana.jpg",
-                    "Tropical Fruits Farm",
-                    "+5544332211"
-                ),
-                ProductItem(
-                    "f3",
-                    "Grapes",
-                    17000,
-                    "Juicy and sweet grapes bunch",
-                    "https://fruit-vegi-list-api.cyclic.app/images/graphes.png",
-                    "Vineyard Delights",
-                    "+9876543210"
-                ),
-                ProductItem(
-                    "f4",
-                    "Mango",
-                    19000,
-                    "Ripe and delicious mangoes",
-                    "https://fruit-vegi-list-api.cyclic.app/images/mango.jpg",
-                    "Tropical Fruits Farm",
-                    "+1112233445"
-                )
-            )
-            productAdapter.submitList(productList)
+//            val productList = listOf(
+//                ProductItem(
+//                    "v1",
+//                    "Carrot",
+//                    15000,
+//                    "Fresh and crunchy carrots",
+//                    "https://fruit-vegi-list-api.cyclic.app/images/carrot.jpg",
+//                    "Farm Fresh Produce",
+//                    "+1234567890"
+//                ),
+//                ProductItem(
+//                    "v2",
+//                    "Broccoli",
+//                    12000,
+//                    "Nutrient-rich broccoli florets",
+//                    "https://fruit-vegi-list-api.cyclic.app/images/beetroot.jpg",
+//                    "Green Gardens",
+//                    "+9876543210"
+//                ),
+//                ProductItem(
+//                    "v3",
+//                    "Spinach",
+//                    18000,
+//                    "Fresh and nutrient-packed spinach leaves",
+//                    "https://fruit-vegi-list-api.cyclic.app/images/cauli-flower.jpg",
+//                    "Organic Greens Farm",
+//                    "+9876543210"
+//                ),
+//                ProductItem(
+//                    "v4",
+//                    "Bell Pepper",
+//                    20000,
+//                    "Colorful bell peppers for cooking",
+//                    "https://fruit-vegi-list-api.cyclic.app/images/tomatoes.jpeg",
+//                    "Rainbow Harvest",
+//                    "+1234567890"
+//                ),
+//                ProductItem(
+//                    "f1",
+//                    "Apple",
+//                    13000,
+//                    "Sweet and juicy red apples",
+//                    "https://fruit-vegi-list-api.cyclic.app/images/apple.jpg",
+//                    "Orchard Delights",
+//                    "+1112233445"
+//                ),
+//                ProductItem(
+//                    "f2",
+//                    "Banana",
+//                    15000,
+//                    "Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas Ripe yellow bananas ",
+//                    "https://fruit-vegi-list-api.cyclic.app/images/banana.jpg",
+//                    "Tropical Fruits Farm",
+//                    "+5544332211"
+//                ),
+//                ProductItem(
+//                    "f3",
+//                    "Grapes",
+//                    17000,
+//                    "Juicy and sweet grapes bunch",
+//                    "https://fruit-vegi-list-api.cyclic.app/images/graphes.png",
+//                    "Vineyard Delights",
+//                    "+9876543210"
+//                ),
+//                ProductItem(
+//                    "f4",
+//                    "Mango",
+//                    19000,
+//                    "Ripe and delicious mangoes",
+//                    "https://fruit-vegi-list-api.cyclic.app/images/mango.jpg",
+//                    "Tropical Fruits Farm",
+//                    "+1112233445"
+//                )
+//            )
+//            productAdapter.submitList(productList)
         }
         val root: View = binding.root
         return root

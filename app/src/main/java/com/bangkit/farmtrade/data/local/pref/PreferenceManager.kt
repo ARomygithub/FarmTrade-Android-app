@@ -29,7 +29,20 @@ class PreferenceManager @Inject constructor(
         }
     }
 
+    suspend fun setId(id : Int) {
+        dataStore.edit { preferences ->
+            preferences[ID_KEY] = id.toString()
+        }
+    }
+
+    suspend fun getId(): Flow<String> {
+        return dataStore.data.map { preferences ->
+            preferences[ID_KEY] ?: ""
+        }
+    }
+
     companion object {
         private val TOKEN_KEY = stringPreferencesKey("token")
+        private val ID_KEY = stringPreferencesKey("id")
     }
 }

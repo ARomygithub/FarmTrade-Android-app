@@ -8,18 +8,23 @@ import androidx.navigation.ui.AppBarConfiguration
 import androidx.navigation.ui.setupWithNavController
 import com.bangkit.farmtrade.databinding.ActivityMainBinding
 import com.google.android.material.bottomnavigation.BottomNavigationView
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
 class MainActivity : AppCompatActivity() {
 
     private lateinit var binding: ActivityMainBinding
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
         binding = ActivityMainBinding.inflate(layoutInflater)
         setContentView(binding.root)
+        auth = Firebase.auth
         val mainViewModel = ViewModelProvider(this)[MainViewModel::class.java]
 
         val navView: BottomNavigationView = binding.navView
@@ -34,7 +39,8 @@ class MainActivity : AppCompatActivity() {
         )
 //        setupActionBarWithNavController(navController, appBarConfiguration)
         navView.setupWithNavController(navController)
-        if(!mainViewModel.isLogin()) {
+        val user = auth.currentUser
+        if(user == null) {
             navController.navigate(R.id.action_navigation_home_to_loginActivity)
             finish()
         }

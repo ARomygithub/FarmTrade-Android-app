@@ -70,7 +70,6 @@ class ForecastFragment : Fragment() {
             }
             datePicker.show(childFragmentManager,"datePicker")
         }
-        // dummy
         binding.btnForecast.setOnClickListener {
             val action = ForecastFragmentDirections.actionNavigationForecastToDetailForecastFragment()
             action.komoditas = binding.edKomoditas.text.toString()

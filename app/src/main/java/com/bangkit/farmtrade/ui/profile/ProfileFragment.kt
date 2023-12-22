@@ -4,6 +4,7 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 import androidx.appcompat.app.AlertDialog
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
@@ -11,6 +12,9 @@ import androidx.navigation.fragment.findNavController
 import com.bangkit.farmtrade.R
 import com.bangkit.farmtrade.databinding.FragmentProfileBinding
 import com.bumptech.glide.Glide
+import com.google.firebase.auth.FirebaseAuth
+import com.google.firebase.auth.ktx.auth
+import com.google.firebase.ktx.Firebase
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -22,6 +26,7 @@ class ProfileFragment : Fragment() {
     // onDestroyView.
     private val binding get() = _binding!!
     private val profileViewModel: ProfileViewModel by viewModels()
+    private lateinit var auth: FirebaseAuth
 
     override fun onCreateView(
         inflater: LayoutInflater,
@@ -29,6 +34,7 @@ class ProfileFragment : Fragment() {
         savedInstanceState: Bundle?
     ): View {
         _binding = FragmentProfileBinding.inflate(inflater, container, false)
+        auth = Firebase.auth
         with(binding) {
             profileViewModel.isLoading.observe(viewLifecycleOwner) {
                 progressBar.visibility = if(it) View.VISIBLE else View.GONE
@@ -50,9 +56,48 @@ class ProfileFragment : Fragment() {
                     profileViewModel.saveProfile(
                         profileNameEd.text.toString(),
                         profileEmailEd.text.toString(),
-                        profileContactEd.text.toString(),
-                        profilePasswordEd.text.toString()
+                        profileContactEd.text.toString()
                     )
+                    if(profilePasswordEd.text.toString().isNotEmpty()) {
+                        try {
+                            auth.currentUser!!.updatePassword(profilePasswordEd.text.toString())
+                                .addOnCompleteListener {task ->
+                                    if(task.isSuccessful) {
+                                        Toast.makeText(
+                                            requireContext(),
+                                            "Password updated.",
+                                            Toast.LENGTH_SHORT,
+                                        ).show()
+                                    } else {
+                                        Toast.makeText(
+                                            requireContext(),
+                                            "Password update failed.",
+                                            Toast.LENGTH_SHORT,
+                                        ).show()
+                                    }
+                                }
+                        } catch (_ : Exception) {}
+                    }
+                    if(profileEmailEd.text.toString().isNotEmpty()) {
+                        try {
+                            auth.currentUser!!.verifyBeforeUpdateEmail(profileEmailEd.text.toString())
+                                .addOnCompleteListener {task ->
+                                    if(task.isSuccessful) {
+                                        Toast.makeText(
+                                            requireContext(),
+                                            "Email updated.",
+                                            Toast.LENGTH_SHORT,
+                                        ).show()
+                                    } else {
+                                        Toast.makeText(
+                                            requireContext(),
+                                            "Email update failed.",
+                                            Toast.LENGTH_SHORT,
+                                        ).show()
+                                    }
+                                }
+                        } catch (_ : Exception) {}
+                    }
                     // dialog success-error
                     profileViewModel.saveResponse.value?.let {response ->
                         AlertDialog.Builder(requireContext()).apply {
@@ -74,6 +119,7 @@ class ProfileFragment : Fragment() {
                     setTitle("Logout")
                     setMessage("Anda yakin ingin keluar dari akun ini?")
                     setNegativeButton("Yes") { _, _ ->
+                        auth.signOut()
                         profileViewModel.logout()
                         findNavController().navigate(R.id.action_navigation_profile_to_loginActivity)
                         activity?.finish()
@@ -100,9 +146,9 @@ class ProfileFragment : Fragment() {
                         .into(profileImage)
                     nameLabel.text = profileResponse.value!!.name
                     profileNameEd.setText(profileResponse.value!!.name)
-                    profileEmailEd.setText(profileResponse.value!!.email)
+                    profileEmailEd.setText(auth.currentUser!!.email)
                     profileContactEd.setText(profileResponse.value!!.contact)
-                    profilePasswordEd.setText(profileResponse.value!!.password)
+                    profilePasswordEd.setText("")
                 }
             }
         } catch (_ : Exception) {}

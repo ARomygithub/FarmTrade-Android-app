@@ -7,6 +7,7 @@ import androidx.lifecycle.viewModelScope
 import com.bangkit.farmtrade.data.remote.request.RegisterRequest
 import com.bangkit.farmtrade.data.remote.response.RegisterResponse
 import com.bangkit.farmtrade.data.remote.retrofit.ApiService
+import com.google.firebase.auth.FirebaseUser
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -38,5 +39,9 @@ class SignUpViewModel @Inject constructor(
             }
             _isLoading.value = false
         }
+    }
+
+    fun createUser(user: FirebaseUser?) {
+        //do something
     }
 }

@@ -9,7 +9,9 @@ import com.bangkit.farmtrade.data.remote.response.ProfileResponse
 import com.bangkit.farmtrade.data.remote.response.RegisterResponse
 import com.bangkit.farmtrade.data.remote.retrofit.ApiService
 import dagger.hilt.android.lifecycle.HiltViewModel
+import kotlinx.coroutines.flow.first
 import kotlinx.coroutines.launch
+import kotlinx.coroutines.runBlocking
 import javax.inject.Inject
 
 @HiltViewModel
@@ -30,8 +32,11 @@ class ProfileViewModel @Inject constructor(
         _isEditable.value = true
     }
 
-    fun saveProfile(name: String, email: String, contact: String, password: String) {
+    fun saveProfile(name: String, email: String, contact: String) {
         _isLoading.value = true
+        var id: String
+        runBlocking { id = pref.getId().first() }
+        // do something
         _saveResponse.value = RegisterResponse(false, "Success")
         _isEditable.value = false
         _isLoading.value = false
@@ -43,14 +48,15 @@ class ProfileViewModel @Inject constructor(
 
     fun getProfile() {
         _isLoading.value = true
-        _profileResponse.value =  ProfileResponse(
-            "1",
-            "Richard",
-            "https://avatars.githubusercontent.com/u/24701601?v=4",
-            "tes123@gmail.com",
-            "08123456789",
-            "123456"
-        )
+        // do something
+//        _profileResponse.value =  ProfileResponse(
+//            "1",
+//            "Richard",
+//            "https://avatars.githubusercontent.com/u/24701601?v=4",
+//            "tes123@gmail.com",
+//            "08123456789",
+//            "123456"
+//        )
         _isLoading.value = false
     }
 

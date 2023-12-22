@@ -8,6 +8,7 @@ import com.bangkit.farmtrade.data.local.pref.PreferenceManager
 import com.bangkit.farmtrade.data.remote.request.LoginRequest
 import com.bangkit.farmtrade.data.remote.response.LoginResponse
 import com.bangkit.farmtrade.data.remote.retrofit.ApiService
+import com.google.firebase.auth.FirebaseUser
 import com.google.gson.Gson
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.launch
@@ -47,6 +48,14 @@ class LoginViewModel @Inject constructor(
     private fun setToken(token: String) {
         viewModelScope.launch {
             pref.setToken(token)
+        }
+    }
+
+    fun setIdFromUser(user: FirebaseUser) {
+        viewModelScope.launch {
+            // do something
+//            apiService.
+//            pref.setId(id)
         }
     }
 }

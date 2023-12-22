@@ -17,7 +17,9 @@ import com.github.mikephil.charting.data.LineDataSet
 import com.github.mikephil.charting.highlight.Highlight
 import com.github.mikephil.charting.interfaces.datasets.ILineDataSet
 import com.github.mikephil.charting.listener.OnChartValueSelectedListener
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class DetailForecastFragment: Fragment(), OnChartValueSelectedListener {
     private var _binding: FragmentDetailForecastBinding? = null
     private val binding get() = _binding!!
@@ -36,87 +38,15 @@ class DetailForecastFragment: Fragment(), OnChartValueSelectedListener {
             nameKomoditas.text = DetailForecastFragmentArgs.fromBundle(arguments as Bundle).komoditas
             daerahKomoditas.text = DetailForecastFragmentArgs.fromBundle(arguments as Bundle).daerah
             tanggalKomoditas.text = DetailForecastFragmentArgs.fromBundle(arguments as Bundle).dateToPredict
-            val response = detailViewModel.getForecast(
+            detailViewModel.forecast.observe(viewLifecycleOwner) {forecast ->
+                setChart(forecast)
+            }
+            detailViewModel.getForecast(
                 nameKomoditas.text.toString(),
                 daerahKomoditas.text.toString(),
                 tanggalKomoditas.text.toString()
             )
-            setChart(response)
         }
-//        with(binding) {
-//            chart.setOnChartValueSelectedListener(this@DetailForecastFragment)
-//            chart.setDrawGridBackground(false)
-//            chart.description.isEnabled = false
-//            chart.setDrawBorders(false)
-//            chart.axisRight.isEnabled = false
-//            chart.axisLeft.setDrawGridLines(true)
-//            chart.axisLeft.setDrawAxisLine(true)
-//            chart.xAxis.position = XAxis.XAxisPosition.BOTTOM
-//            chart.xAxis.setDrawAxisLine(true)
-//            chart.xAxis.setDrawGridLines(false)
-//            chart.xAxis.valueFormatter = DateAxisFormatter()
-//            // enable touch gestures
-//            chart.setTouchEnabled(true)
-//
-//            // enable scaling and dragging
-//            chart.isDragEnabled = true
-//            chart.setScaleEnabled(true)
-//
-//            // if disabled, scaling can be done on x- and y-axis separately
-//            chart.setPinchZoom(false)
-//
-//            val entries = ArrayList<Entry>()
-//            val forecastVal = arrayOf(
-//                9556.798828125,
-//                9556.798828125,
-//                9556.798828125,
-//                9556.798828125,
-//                9556.798828125,
-//                9556.798828125,
-//                9556.798828125,
-//                9556.798828125,
-//                9556.798828125,
-//                9556.798828125,
-//                9556.798828125,
-//                9556.798828125,
-//                9556.798828125,
-//                9556.798828125,
-//                9556.798828125,
-//                9556.798828125,
-//                9556.798828125,
-//                9556.798828125,
-//                9556.798828125,
-//                9757.2841796875,
-//                9757.2841796875,
-//                9757.2841796875,
-//                9757.2841796875,
-//                9757.2841796875,
-//                9757.2841796875,
-//                9757.2841796875,
-//                9757.2841796875,
-//                9757.2841796875,
-//                9757.2841796875,
-//                9757.2841796875
-//            )
-//            for(i in 1..30) {
-//                entries.add(Entry(i.toFloat(), forecastVal[i-1].toFloat()))
-//            }
-//            val lds = LineDataSet(entries, "Label")
-//            lds.setDrawCircles(true)
-//            lds.setDrawValues(true)
-//            lds.lineWidth = 2.5f
-//            lds.circleRadius = 4f
-//            lds.enableDashedLine(10f, 10f, 0f)
-////            lds.setColors(ColorTemplate.LIBERTY_COLORS, requireContext())
-////            lds.setCircleColors(ColorTemplate.LIBERTY_COLORS, requireContext())
-////            lds.color = R.color.md_theme_light_primary
-////            lds.setCircleColor(R.color.md_theme_light_primary)
-//            val arrLds = ArrayList<ILineDataSet>()
-//            arrLds.add(lds)
-//            chart.data = LineData(arrLds)
-//            chart.invalidate()
-//        }
-//        binding.chart.animateX(1500)
         setupToolbar()
         return binding.root
     }
