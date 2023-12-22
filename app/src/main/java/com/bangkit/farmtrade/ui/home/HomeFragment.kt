@@ -61,7 +61,7 @@ class HomeFragment : Fragment() {
             val productAdapter = ProductAdapter()
             productAdapter.setOnItemClickCallback(object: ProductAdapter.OnItemClickCallback{
                 override fun onItemClicked(product: ProductItem) {
-                    val action = HomeFragmentDirections.actionNavigationHomeToDetailProductFragment()
+                    val action = HomeFragmentDirections.actionNavigationHomeToActivityDetailProduct()
                     action.description = product.description
                     action.image = product.image
                     action.title = product.name

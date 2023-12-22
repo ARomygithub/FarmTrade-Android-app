@@ -28,6 +28,8 @@
             android:label="Masuk"/>
         <activity android:name=".ui.signup.SignUpActivity"
             android:label="Daftar"/>
+        <activity android:name=".ui.detailproduct.ActivityDetailProduct"
+            android:label="Detail Produk"/>
     </application>
 
 </manifest>

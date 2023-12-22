@@ -16,8 +16,8 @@
             app:popUpTo="@id/navigation_home"
             app:popUpToInclusive="true" />
         <action
-            android:id="@+id/action_navigation_home_to_detailProductFragment"
-            app:destination="@id/detailProductFragment" />
+            android:id="@+id/action_navigation_home_to_activityDetailProduct"
+            app:destination="@id/activityDetailProduct" />
     </fragment>
 
     <fragment
@@ -62,10 +62,10 @@
         android:id="@+id/loginActivity"
         android:name="com.bangkit.farmtrade.ui.login.LoginActivity"
         android:label="LoginActivity" />
-    <fragment
-        android:id="@+id/detailProductFragment"
-        android:name="com.bangkit.farmtrade.ui.detailproduct.DetailProductFragment"
-        android:label="DetailProductFragment" >
+    <activity
+        android:id="@+id/activityDetailProduct"
+        android:name="com.bangkit.farmtrade.ui.detailproduct.ActivityDetailProduct"
+        android:label="Detail Product" >
         <argument
             android:name="title"
             app:argType="string"
@@ -95,5 +95,5 @@
             app:argType="string"
             android:defaultValue="085783722567" />
 
-    </fragment>
+    </activity>
 </navigation>
